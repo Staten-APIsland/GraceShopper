@@ -5,7 +5,7 @@ module.exports = router;
 
 // creating a separate file for user's cart routes - redirect to that file if user is trying to get their cart
 // router.use('/users', require('./users'));
-router.use('/:id/cart/', require('./cart'));
+// router.use('/:id/cart/', require('./cart'));
 
 router.get('/', async (req, res, next) => {
   try {
@@ -32,6 +32,15 @@ router.get('/:id', async (req, res, next) => {
     } else {
       res.sendStatus(404).end();
     }
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post('/signup', async (req, res, next) => {
+  try {
+    const newUser = await User.create(req.body);
+    res.json(newUser);
   } catch (err) {
     next(err);
   }

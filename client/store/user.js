@@ -66,17 +66,12 @@ export const signUp = user => async dispatch => {
     newUser = await axios.post('/auth/signup', user);
     // dispatch create user
     dispatch(createUser(user));
-    console.log(
-      'newUser inside second trycatch of signUp thunk creator',
-      newUser
-    );
   } catch (error) {
     console.error(error);
   }
 
   // then go to user page - i.e getUser on this new user, use newUser.data.email etc
   try {
-    console.log('second trycatch block >>>>>>>>');
     dispatch(getUser(newUser.data));
     history.push('/home');
   } catch (dispatchOrHistoryErr) {
