@@ -15,10 +15,7 @@ const Product = db.define('product', {
     allowNull: false
   },
   imageUrl: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    defaultValue:
-      'https://gameofthrones.fandom.com/wiki/Ice?file=Eddard_1x01.jpg'
+    type: Sequelize.STRING
   },
   amountInStock: {
     type: Sequelize.INTEGER,

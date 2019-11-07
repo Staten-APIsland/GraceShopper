@@ -3,10 +3,6 @@ const {User} = require('../db/models/index');
 
 module.exports = router;
 
-// creating a separate file for user's cart routes - redirect to that file if user is trying to get their cart
-// router.use('/users', require('./users'));
-router.use('/:id/cart/', require('./cart'));
-
 router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({
