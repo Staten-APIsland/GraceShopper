@@ -1,5 +1,4 @@
 import React from 'react';
-import {Products} from './products';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {getAllProductsThunk} from '../store/products';

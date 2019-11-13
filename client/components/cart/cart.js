@@ -1,8 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {logout} from '../../store';
 import CartItem from './cart-item';
 import CheckoutStripe from './checkout-stripe';
 
@@ -24,9 +20,8 @@ const Cart = props => {
         </tbody>
       </table>
       <div id="cart-total">
-        Total: ${price.slice(0, price.length - 2)}.{price.slice(
-          price.length - 2
-        )}
+        Total: ${price.slice(0, price.length - 2)}.
+        {price.slice(price.length - 2)}
       </div>
       <div id="cart-checkout">
         <div id="cart-checkout-main-btn">
