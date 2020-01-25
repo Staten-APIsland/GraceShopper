@@ -49,14 +49,19 @@ class Routes extends Component {
 /**
  * CONTAINER
  */
-const mapState = state => ({
-  // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
-  // Otherwise, state.user will be an empty object, and state.user.id will be falsey
-  isLoggedIn: !!state.user.id
-});
+const mapState = state => {
+  console.log('state in map state', state);
+  return {
+    // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
+    // Otherwise, state.user will be an empty object, and state.user.id will be falsey
+    isLoggedIn: !!state.user.id
+    // user: state.user
+  };
+};
 
 const mapDispatch = dispatch => ({
   loadInitialData() {
+    // if there's a state disaptch me with user
     dispatch(me());
     // add dispatch of action to grab the cart
   }

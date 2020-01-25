@@ -10,7 +10,7 @@ const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props;
 
   return (
-    <div>
+    <div id="login-form">
       <form onSubmit={handleSubmit} name={name}>
         <div>
           <label htmlFor="email">
@@ -26,7 +26,7 @@ const AuthForm = props => {
         </div>
         {/* create first name and last name fields here, depending on whether "name" on props is login or signup*/}
         {name === 'signup' ? (
-          <div>
+          <div id="signup-form">
             <div>
               <label htmlFor="firstName">
                 <small>First Name</small>

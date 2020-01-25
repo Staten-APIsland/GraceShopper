@@ -12,7 +12,7 @@ const Cart = props => {
           {props.cartItems.map(item => (
             <CartItem
               key={item.id}
-              {...item}
+              item={item}
               handleAdd={props.handleAdd}
               handleRemove={props.handleRemove}
             />

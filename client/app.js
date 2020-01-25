@@ -5,6 +5,7 @@ import Routes from './routes';
 
 const App = () => (
   <div>
+    <div id="wrap-bg" />
     <Navbar />
     <Routes />
   </div>

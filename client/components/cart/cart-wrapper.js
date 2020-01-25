@@ -1,8 +1,6 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-// import {Link} from 'react-router-dom';
-// import {logout} from '../store';
+
 import {
   addToCartThunk,
   removeFromCart,
@@ -43,10 +41,9 @@ export class CartWrapper extends React.Component {
     if (event.target) event.preventDefault();
     this.props.checkoutAction();
   }
-
   render() {
     return this.props.itemsInCart.length > 0 ? (
-      <div>
+      <div id="cart-wrapper">
         <Cart
           cartItems={this.props.itemsInCart}
           handleAdd={this.handleAdd}
@@ -80,8 +77,9 @@ const mapDispatchToProps = function(dispatch) {
   };
 };
 
-const ConnectedCartWrapper = connect(mapStateToProps, mapDispatchToProps)(
-  CartWrapper
-);
+const ConnectedCartWrapper = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CartWrapper);
 
 export default ConnectedCartWrapper;

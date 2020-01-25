@@ -1,5 +1,6 @@
 import axios from 'axios';
 import history from '../history';
+import {getUser} from './user';
 
 /* EV: functionalities that should be brought in here:
 1. add an item to the cart
@@ -16,13 +17,13 @@ const CHECKOUT = 'CHECKOUT';
 const CALC_TOTAL = 'CALC_TOTAL';
 const EMPTY_CART = 'EMPTY_CART';
 // for thunk creator, need two actions - one to dispatch when you want to see the cart, the other when you got the cart and want to update state accordingly
-const GET_CART = 'GET_CART';
 const GOT_CART = 'GOT_CART';
 
 /**
  * INITIAL STATE
  */
 const defaultCart = {
+  orderId: 0,
   products: [],
   total: 0
 };
@@ -38,49 +39,64 @@ export const removeFromCart = productId => ({
 export const checkout = () => ({type: CHECKOUT});
 export const calcTotal = () => ({type: CALC_TOTAL});
 export const emptyCart = () => ({type: EMPTY_CART});
-export const getCart = userId => ({type: GET_CART});
-export const gotCart = orderId => ({type: GOT_CART, orderId});
+export const gotCart = (cartContents, cartId) => ({
+  type: GOT_CART,
+  cartContents,
+  cartId
+});
 
 /**
  * THUNK CREATORS
  */
 
-// export const getCartThunkCreator = (userId) => {
-//   async dispatch => {
-//     try {
-//       const {data} = await axios.get('/')
-//     } catch (error) {
+// decrement or destroy cart item
 
-//     }
-//   }
-// }
-// export const addToCartThunkCreator = product => async dispatch => {
-//   try {
-//     // ajax to create new row in the orderItem tablee
-//     // const productToAdd = await axios.post('/api/product')
-//     // dispatch added to cart
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
-
-export const addToCartThunk = productId => (dispatch, getState) => {
-  let state = getState();
-  const selectedProduct = state.cart.products.find(
-    product => product.id === Number(productId)
-  );
-  dispatch(addToCart(selectedProduct));
+// get or create cart
+export const getCartId = userId => async dispatch => {
+  const data = await axios.get(`api/users/${userId}`);
+  const {orders} = data;
+  const openCart = orders.filter(order => order.status === 'in cart');
+  if (openCart) dispatch(getCart());
 };
 
-// hold for now
-// export const removeFromCartThunk = productId => (dispatch, getState) => {
-//   let state = getState();
-//   console.log('state!', state.products);
-//   // debugger;
-//   const selectedProduct = state.products.find(product => product.id === Number(productId));
-//   console.log('selectedProduct', selectedProduct)
-//   dispatch(removeFromCart(selectedProduct));
-// };
+// thunk creator dispatched when fetching the cart - takes the cart's order ID and fetches its contents from orderItems. This is dispatched from User - because user's Order histry is now loaded when they log in
+export const getCartItemsThunkCreator = orderId => async dispatch => {
+  // ajax get request to orderItems table
+  const {data} = await axios.get(`/api/orderItems/${orderId}`);
+
+  dispatch(gotCart(data, orderId));
+  // update cart total thunk also needs to run here
+};
+
+export const createCartThunkCreator = userId => async dispatch => {
+  try {
+    const {data} = await axios.post('/api/orders/', {
+      status: 'in cart',
+      userId: userId
+    });
+    dispatch(gotCart(data));
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const addToCartThunk = productId => async (dispatch, getState) => {
+  try {
+    let state = getState();
+    console.log({state});
+    if (state.user.id) {
+      await axios.post(`/api/orderItems/${state.cart.orderId}`, {productId});
+    }
+    const selectedProduct = state.cart.products.find(
+      product => product.id === Number(productId)
+    );
+    dispatch(addToCart(selectedProduct));
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// CREATE CART THUNK CREATOR
 
 /**
  * REDUCER
@@ -89,14 +105,20 @@ export const addToCartThunk = productId => (dispatch, getState) => {
 // eslint-disable-next-line complexity
 export default function(state = defaultCart, action) {
   switch (action.type) {
+    case GOT_CART: {
+      // replace whatever is in the state cart with the stuff that just came back from the DB
+      return {...state, products: action.cartContents, orderId: action.cartId};
+    }
     case ADD_TO_CART: {
       // when add to cart button clicked, update cart prop on state to include this new item
       // also needs to take care of the price - find the new item's price and add it to the current total
 
       //this code takes care of if the item is already in cart - will increase quantity by 1
+
       const updatedProducts = [...state.products];
       if (!updatedProducts.length) updatedProducts.push(action.product);
       else {
+        console.log(updatedProducts);
         const productToAdd = updatedProducts.find(
           item => item.id === action.product.id
         );

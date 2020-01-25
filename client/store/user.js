@@ -6,6 +6,7 @@ import {emptyCart} from '../store/cart';
 /**
  * ACTION TYPES
  */
+
 const GET_USER = 'GET_USER';
 const REMOVE_USER = 'REMOVE_USER';
 const CREATE_USER = 'CREATE_USER';
@@ -19,7 +20,8 @@ const defaultUser = {};
 /**
  * ACTION CREATORS
  */
-const getUser = user => ({type: GET_USER, user});
+
+export const getUser = user => ({type: GET_USER, user});
 const removeUser = () => ({type: REMOVE_USER});
 const createUser = user => ({type: CREATE_USER, user});
 const updateUser = user => ({type: UPDATE_USER, user});
@@ -27,10 +29,11 @@ const updateUser = user => ({type: UPDATE_USER, user});
 /**
  * THUNK CREATORS
  */
-export const me = () => async dispatch => {
+export const me = user => async dispatch => {
   try {
-    const res = await axios.get('/auth/me');
+    const res = await axios.get('/auth/me', user);
     dispatch(getUser(res.data || defaultUser));
+    // dispatch thunk that goes to the cart reducer with the user's ID
   } catch (err) {
     console.error(err);
   }

@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const Product = require('./product');
 const db = require('../db');
 
 const OrderItem = db.define('orderItem', {
@@ -17,7 +18,17 @@ const OrderItem = db.define('orderItem', {
     type: Sequelize.INTEGER,
     allowNull: false,
     defaultValue: 1
+  },
+  price: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    defaultValue: 0
   }
+});
+
+OrderItem.beforeCreate(async function(orderItem) {
+  const product = await Product.findByPk(orderItem.productId);
+  orderItem.price = product.price;
 });
 
 module.exports = OrderItem;

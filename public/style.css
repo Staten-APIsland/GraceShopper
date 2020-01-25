@@ -1,9 +1,28 @@
 body {
   font-family: sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+
+#wrap-bg {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  background-image: url('stone-bg-img.jpg');
+  background-size: 100vw;
+  opacity: 0.2;
+  z-index: -3;
+  top: 0;
 }
 
 a {
   text-decoration: none;
+}
+
+a:hover {
+  color: #DADADA;
+  transition: 0.4s;
 }
 
 label {
@@ -12,38 +31,273 @@ label {
 
 nav a {
   display: inline-flex;
+  color: #ffffff;
   margin: 1em;
+}
+
+nav a:hover {
+  color: #DADADA;
+  transition: 0.4s;
 }
 
 form div {
   margin: 1em;
   display: inline-block;
 }
+
 @font-face {
   font-family: 'Literata';
   src: url('https://fonts.googleapis.com/css?family=Literata&display=swap');
 }
+
 #nav-bar {
   display: flex;
   align-items: baseline;
+  align-content: center;
   justify-content: space-between;
   padding: 1em;
+  font-family: 'Libre Baskerville', serif;
+  height: 80px;
+  padding: 10px;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  position: relative;
 }
 
-#home-bar {
+#nav-left {
   display: flex;
-  justify-content: center;
+  align-items: flex-start;
+}
+
+#nav-right {
+  display: flex;
+}
+
+.nav-cart {
+  height: 25px;
+  margin-right: 5px;
+}
+
+.divider {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 16px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#home {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-top: 80px;
+  flex-direction: column;
+}
+
+#home-bg {
+  height: auto;
+  flex-basis: auto;
+  z-index: -1;
+  position: absolute;
+  top: 130px;
+  right: 100px;
+}
+
+#home-title {
+  font-family: 'Literata';
+}
+
+#header {
+  flex-wrap: wrap;
+  flex-basis: 100%;
+  height: auto;
+  margin-top: 100px;
+  display: flex;
+}
+
+#subheader {
+  font-family: 'Century Gothic', 'Arial';
+  height: auto;
+  flex-basis: auto;
+  position: absolute;
+  top: 400px;
+  margin-left: 400px;
+  width: 170px;
+}
+
+#product-bar {
+  width: 70%;
+  flex-basis: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#product-bar-more {
+  margin-left: 10px;
+}
+
+#product-bar-more a {
+  font-family: 'Century Gothic', 'Arial';
+  font-size: 26px;
+  color: #ffffff;
+}
+
+#product-bar-more a:hover {
+  color: #DADADA;
+  transition: 0.4s;
+}
+
+.product-bar-div {
+  flex-grow: 1;
+  border: 5px;
+  border-color: #ffffff;
+  opacity: .5;
+}
+
+.product-bar-div:hover {
+  opacity: 1;
+  transition: 0.4s;
+}
+
+#products-list-all {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  margin-top: 80px;
+  flex-basis: 90%;
+  flex-direction: column;
+}
+
+#products-list-wrapper {
+  width: 90%;
+}
+
+#products-list-header {
+  display: flex;
+}
+
+#products-list-header h1 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 30px;
+}
+
+.product-div-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.product-div {
+  display: flex;
+  flex-basis: 28%;
+  padding: 10px;
+  margin: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #ffffff;
+  align-content: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.product-div h2 {
+  font-family: 'Century Gothic', 'Arial';
+  font-weight: normal;
+  font-size: 26px;
+  margin: 2px;
+  margin-bottom: 5px;
+}
+
+.product-div h4 {
+  font-family: 'Century Gothic', 'Arial';
+  font-weight: normal;
+  margin: 2px;
+  margin-bottom: 20px;
+}
+
+.product-img {
   text-align: center;
 }
 
-#Home-Title {
-  font-family: 'Literata';
+.product-buy-btn {
+  align-self: flex-end;
 }
-#header {
-  position: absolute;
+
+form button {
+  background-color: #000000;
+  color: #FFFFFF;
+  border-style: solid;
+  border-width: 1px;
+  margin: 10px;
+  padding: 5px;
 }
-#product-bar {
+
+#cart-wrapper {
+  margin-top: 100px;
   display: flex;
+  justify-content: center;
+}
+
+#cart-wrapper h1 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 30px;
+}
+
+.cart-item {
+  font-family: 'Century Gothic', 'Arial';
+  font-weight: normal;
+}
+
+.cart-item td {
+  padding: 15px;
+}
+
+#cart-total {
+  font-family: 'Century Gothic', 'Arial';
+  margin: 20px;
+}
+
+#cart-checkout {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#cart-checkout button {
+  background-color: #000000;
+  color: #FFFFFF;
+  font-family: 'Century Gothic', 'Arial';
+  font-size: 14px;
+  border-style: solid;
+  border-width: 1px;
+  height: 30px;
+  margin: 10px;
+  padding: 5px;
+}
+
+#user-page-wrapper, #login-form, #signin-form {
+  margin-top: 80px;
+  margin-left: 30px;
+}
+
+#user-page-wrapper a, #login-form a, #signin-form a {
+  color: #ffffff;
+}
+
+#user-page-wrapper a:hover, #login-form a:hover, #signin-form a:hover {
+  color: #DADADA;
+  transition: 0.4s;
+}
+
+.products-list-all {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   position: relative;
+}
+
+.product-div {
+  display: flex;
   flex-direction: row;
 }

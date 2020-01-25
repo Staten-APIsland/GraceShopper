@@ -10,31 +10,43 @@ const Navbar = ({handleClick, isLoggedIn, cartSize}) => (
       {isLoggedIn ? (
         <div id="nav-bar">
           {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-          <Link to="/products">See all our products</Link>
-          <Link to="/cart">Cart {`(${cartSize})`}</Link>
-          <Link to="/profile">My Account</Link>
+          <div id="nav-left">
+            <div className="nav-links">
+              <Link to="/">THE ARMORY</Link>
+            </div>
+            <div className="divider"> | </div>
+            <div className="nav-links" />
+            <Link to="/products">Products</Link>
+          </div>
+          <div id="nav-right">
+            <a href="#" onClick={handleClick}>
+              Logout
+            </a>
+            <Link className="nav-right" to="/cart">
+              <div className="nav-cart"><img src="images/cart-icon.png" height="22px" /></div> {`(${cartSize})`}
+            </Link>
+            <Link className="nav-right" to="/profile">My Account</Link>
+          </div>
         </div>
       ) : (
         <div id="nav-bar">
           <div id="nav-left">
-            <Link to="/">THE ARMORY</Link>
-            <Link to="/">Home</Link>
+            <div className="nav-links">
+              <Link to="/">THE ARMORY</Link>
+            </div>
+            <div className="divider"> | </div>
+            <div className="nav-links" />
             <Link to="/products">Products</Link>
           </div>
           <div id="nav-right">
             {/* The navbar will show these links before you log in */}
             <Link to="/login">Login</Link>
             <Link to="/signup">Sign Up</Link>
-            <Link to="/cart">Cart {`(${cartSize})`}</Link>
+            <Link to="/cart"><div className="nav-cart"><img src="images/cart-icon.png" height="22px" /></div> {`(${cartSize})`}</Link>
           </div>
         </div>
       )}
     </nav>
-    <hr />
   </div>
 );
 

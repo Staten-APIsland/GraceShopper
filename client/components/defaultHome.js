@@ -16,17 +16,21 @@ class DefaultHome extends React.Component {
     const products = this.props.products;
 
     return (
-      <div id="home-bar">
-        <div id="home-bg" />
+      <div id="home">
+        <div id="home-bg">
+          <img src="images/sword.png" width="700px" />
+        </div>
         <div id="header">
-          <h1 id="Home-Title">The Armory</h1>
-          <p>Your one-stop shop for the finest blades money can buy.</p>
+          <img src="images/logo.png" width="1000px" />
+          <div id="subheader">
+            <p>your one-stop shop for the finest blades money can buy.</p>
+          </div>
         </div>
 
         <div id="product-bar">
           {products.map(item => (
             <div
-              id="product-bar-indiv"
+              className="product-bar-div"
               name={`${item.name}`}
               key={`${item.id}`}
             >
@@ -34,7 +38,9 @@ class DefaultHome extends React.Component {
             </div>
           ))}
           {products.length !== 0 ? (
-            <Link to="/products">>>> More</Link>
+            <div id="product-bar-more">
+              <Link to="/products">>>> more</Link>
+            </div>
           ) : (
             <Link />
           )}
