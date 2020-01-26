@@ -4,7 +4,6 @@ body {
   color: #ffffff;
 }
 
-
 #wrap-bg {
   position: fixed;
   height: 100vh;
@@ -21,7 +20,7 @@ a {
 }
 
 a:hover {
-  color: #DADADA;
+  color: #dadada;
   transition: 0.4s;
 }
 
@@ -36,7 +35,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #DADADA;
+  color: #dadada;
   transition: 0.4s;
 }
 
@@ -122,7 +121,7 @@ form div {
   height: auto;
   flex-basis: auto;
   position: absolute;
-  top: 400px;
+  top: 300px;
   margin-left: 400px;
   width: 170px;
 }
@@ -145,7 +144,7 @@ form div {
 }
 
 #product-bar-more a:hover {
-  color: #DADADA;
+  color: #dadada;
   transition: 0.4s;
 }
 
@@ -153,7 +152,7 @@ form div {
   flex-grow: 1;
   border: 5px;
   border-color: #ffffff;
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .product-bar-div:hover {
@@ -227,7 +226,7 @@ form div {
 
 form button {
   background-color: #000000;
-  color: #FFFFFF;
+  color: #ffffff;
   border-style: solid;
   border-width: 1px;
   margin: 10px;
@@ -266,7 +265,7 @@ form button {
 
 #cart-checkout button {
   background-color: #000000;
-  color: #FFFFFF;
+  color: #ffffff;
   font-family: 'Century Gothic', 'Arial';
   font-size: 14px;
   border-style: solid;
@@ -276,17 +275,23 @@ form button {
   padding: 5px;
 }
 
-#user-page-wrapper, #login-form, #signin-form {
+#user-page-wrapper,
+#login-form,
+#signin-form {
   margin-top: 80px;
   margin-left: 30px;
 }
 
-#user-page-wrapper a, #login-form a, #signin-form a {
+#user-page-wrapper a,
+#login-form a,
+#signin-form a {
   color: #ffffff;
 }
 
-#user-page-wrapper a:hover, #login-form a:hover, #signin-form a:hover {
-  color: #DADADA;
+#user-page-wrapper a:hover,
+#login-form a:hover,
+#signin-form a:hover {
+  color: #dadada;
   transition: 0.4s;
 }
 

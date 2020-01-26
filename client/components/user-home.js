@@ -14,6 +14,7 @@ export class UserHome extends React.Component {
   componentDidMount() {
     // on component did mount, check if the orders array includes one that's pending. If so, call getCartItemsThunkCreator on it. If not, call createCartThunkCreator.
     let openCart = null;
+    console.log('orders in props in user-home', this.props.orders);
     if (this.props.orders) {
       openCart = this.props.orders.filter(order => order.status === 'in cart');
       // if there is an open cart, get its ID and thunk to get the items

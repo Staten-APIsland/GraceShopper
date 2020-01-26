@@ -9,6 +9,7 @@ router.post('/login', async (req, res, next) => {
       where: {email: req.body.email},
       include: [{model: Order}]
     });
+    console.log('orders of user pulled up: ', user.orders);
     if (!user) {
       console.log('No such user found:', req.body.email);
       res.status(401).send('Wrong username and/or password');

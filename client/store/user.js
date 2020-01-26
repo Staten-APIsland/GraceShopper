@@ -39,7 +39,6 @@ export const me = user => async dispatch => {
   }
 };
 
-// EV: this used to be export const auth = (email, password, method), which implies there's a way to both authorize an existing user and sign up a new user. I can't think of a way to do that quickly now, and I prefer to be explicit anyway, so I'm separating auth from signup and removing the method argument. This thunk creator will only refer to logging in, there will be a separate one for signing up
 export const auth = (email, password) => async dispatch => {
   let res;
   try {
