@@ -1,7 +1,7 @@
-/* global describe it */
+// /* global describe it */
 
-const seed = require('./seed');
+// const seed = require('./seed');
 
-describe('seed script', () => {
-  it('completes successfully', seed);
-});
+// describe('seed script', () => {
+//   it('completes successfully', seed);
+// });

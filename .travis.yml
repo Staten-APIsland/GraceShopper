@@ -23,7 +23,7 @@ before_deploy:
 deploy:
   skip_cleanup: true # prevents travis from deleting the build
   provider: heroku
-  app: 'the-armory' # see README
+  app: the-armory # see README
   api_key:
     secure: "kNCOkDrjMnU1+sSO3iDvgktD+R41GaXbwblWFMjEQR6H/6QuYNVFRUp6Cyvxi0yTC2+2cJ7D+GLtPRHvoOffsgR6k0Jvh1Ly5l+E+sCmwJqmpfQOwlA+sBoQtc3B5BYmqd/Xv6YjtclDA48rb3bUMu/OgEJyMsF9qat6HqHXNShGFRmOHmP3/exRYNjjRWGh8C8FV7SONfEAYtFDN2aGliVKpY38bGQDnKvJ9vnaUKVIcoNX6TO8vJJ4AB6tR6mxMOwKHi7EeAeYibbiDoIjGFq+3d18nTtiXMvsptc46NrG7BVHlvB6lN28hBrcOTIGyZciUffAXd/Ebg/b3xGnVmyQT6yCsaEhfpf1xrkudRoQF+3hJ9JtU67l6kRGGgnhl88ArT57lT/2RZPfQI3udYYhU7F0gvG4n68TPyuiBFMUbj2KUqB4QNf97xJHdq/oa/r0gscrzpRF27nFKfUgRqmWmJ/fDloNvYZ+kQsV8Fcf6r0x5lD2Vy8Ed0bHvUqoMwBMdSTUfe4MN28g7jSZnFiSGPZ9tLhRy51a81UfRpc4JyTyPPRrsgoLk3DFs5JhVoxkRMRcy8LjU1pckPhiUYwSbud3jbKsnOZl/dg4aoKKovDFevYndBZorbqb+KJqzEnO2KoUrpC0ul3UlYBy+3jbbgTvZKxphciqOChXwHw="
 
